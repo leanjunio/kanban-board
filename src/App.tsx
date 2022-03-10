@@ -7,6 +7,9 @@ export type Ticket = {
   task: string;
   stage: number;
 };
+
+export type Direction = "left" | "right";
+
 function App() {
   const [winnieList, setWinnieList] = useState<Ticket[]>([]);
   const [bradList, setBradList] = useState<Ticket[]>([]);
@@ -36,13 +39,22 @@ function App() {
     }
   };
 
+  const removeTicketFromList = (ticket: Ticket, listIndex: number) => {
+    const listToRemoveFrom = listUtils[listIndex]["list"];
+    const setList = listUtils[listIndex]["setter"];
+    const filteredList = listToRemoveFrom.filter(
+      ({ task }) => task !== ticket.task
+    );
+
+    setList([...filteredList]);
+  };
+
   const moveRight = (task: Ticket) => {
     const currentList = listUtils[task.stage]["list"];
 
     const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
 
-    const updatedList = currentList.filter((t) => t.task !== task.task);
-    listUtils[task.stage]["setter"]([...updatedList]);
+    removeTicketFromList(task, task.stage);
 
     task.stage++;
     const currentNewList = listUtils[task.stage]["list"];
@@ -54,8 +66,7 @@ function App() {
     const currentList = listUtils[task.stage]["list"];
     const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
 
-    const updatedList = currentList.filter((t) => t.task !== task.task);
-    listUtils[task.stage]["setter"]([...updatedList]);
+    removeTicketFromList(task, task.stage);
 
     task.stage--;
     const currentNewList = listUtils[task.stage]["list"];
