@@ -2,18 +2,25 @@ import { Direction, Ticket } from "./App";
 
 type CardProps = {
   task: Ticket;
-  onRight?: (task: Ticket, direction: Direction) => void;
-  onLeft?: (task: Ticket, direction: Direction) => void;
+  onMove: (task: Ticket, direction: Direction) => void;
 };
 
-export const Card = ({ task, onRight, onLeft }: CardProps): JSX.Element => {
+export const Card = ({ task, onMove }: CardProps): JSX.Element => {
+  const LEFT_MOST_COLUMN = 0;
+  const RIGHT_MOST_COLUMN = 3;
+
+  const canMoveLeft = task.stage !== LEFT_MOST_COLUMN;
+  const canMoveRight = task.stage !== RIGHT_MOST_COLUMN;
+
   return (
     <div className="card">
       <h5>{task.task}</h5>
       <div className="buttons">
-        {onLeft && <button onClick={() => onLeft(task, "left")}>left</button>}
-        {onRight && (
-          <button onClick={() => onRight(task, "right")}>right</button>
+        {canMoveLeft && (
+          <button onClick={() => onMove!(task, "left")}>left</button>
+        )}
+        {canMoveRight && (
+          <button onClick={() => onMove!(task, "right")}>right</button>
         )}
       </div>
     </div>

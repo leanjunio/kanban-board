@@ -86,22 +86,22 @@ function App() {
       <header className="App-header">
         <Column column={0} onAdd={openAddTaskPrompt} title="Winnie">
           {winnieList.map((t) => (
-            <Card task={t} onRight={moveTicket} />
+            <Card task={t} onMove={moveTicket} />
           ))}
         </Column>
         <Column column={1} onAdd={openAddTaskPrompt} title="Brad">
           {bradList.map((t) => (
-            <Card task={t} onRight={moveTicket} onLeft={moveTicket} />
+            <Card task={t} onMove={moveTicket} />
           ))}
         </Column>
         <Column column={2} onAdd={openAddTaskPrompt} title="Bob">
           {bobList.map((t) => (
-            <Card task={t} onRight={moveTicket} onLeft={moveTicket} />
+            <Card task={t} onMove={moveTicket} />
           ))}
         </Column>
         <Column column={3} onAdd={openAddTaskPrompt} title="Thomas">
           {thomasList.map((t) => (
-            <Card task={t} onLeft={moveTicket} />
+            <Card task={t} onMove={moveTicket} />
           ))}
         </Column>
       </header>
