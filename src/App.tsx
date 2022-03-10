@@ -33,8 +33,6 @@ function App() {
   };
 
   const moveRight = (task: Ticket) => {
-    // move task to the "right"
-    // remove task from current list
     const currentList = listUtils[task.stage]["list"];
 
     const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
@@ -42,7 +40,6 @@ function App() {
     const updatedList = currentList.filter((t) => t.task !== task.task);
     listUtils[task.stage]["setter"]([...updatedList]);
 
-    // add to the new list on the right
     task.stage++;
     const currentNewList = listUtils[task.stage]["list"];
     currentNewList.splice(indexToPushTo, 0, task);
@@ -50,15 +47,12 @@ function App() {
   };
 
   const moveLeft = (task: Ticket) => {
-    // move task to the "left"
-    // remove task from current list
     const currentList = listUtils[task.stage]["list"];
     const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
 
     const updatedList = currentList.filter((t) => t.task !== task.task);
     listUtils[task.stage]["setter"]([...updatedList]);
 
-    // add to the new list on the left
     task.stage--;
     const currentNewList = listUtils[task.stage]["list"];
     currentNewList.splice(indexToPushTo, 0, task);
