@@ -20,15 +20,19 @@ function App() {
     { list: thomasList, setter: setThomasList },
   ];
 
-  const openPrompt = (column: number) => {
+  const addTicketToList = (ticket: Ticket, listIndex: number) => {
+    const listToAddTo = listUtils[listIndex]["list"];
+    const updateList = listUtils[listIndex]["setter"];
+
+    updateList([...listToAddTo, ticket]);
+  };
+
+  const openPrompt = (listIndex: number) => {
     const newTask = window.prompt("What to do next?");
 
     if (newTask) {
-      const listToAddTo = listUtils[column]["list"];
-      listUtils[column]["setter"]([
-        ...listToAddTo,
-        { stage: column, task: newTask },
-      ]);
+      const newTicket = { stage: listIndex, task: newTask };
+      addTicketToList(newTicket, listIndex);
     }
   };
 
