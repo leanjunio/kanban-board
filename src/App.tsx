@@ -49,6 +49,20 @@ function App() {
     setList([...filteredList]);
   };
 
+  const insertTicketIntoList = (
+    ticket: Ticket,
+    placementIndex: number,
+    listIndex: number
+  ) => {
+    const listToAddTo = listUtils[listIndex]["list"];
+    const setList = listUtils[listIndex]["setter"];
+    const DELETE_COUNT = 0;
+
+    listToAddTo.splice(placementIndex, DELETE_COUNT, ticket);
+
+    setList([...listToAddTo]);
+  };
+
   const moveRight = (task: Ticket) => {
     const currentList = listUtils[task.stage]["list"];
 
@@ -57,9 +71,7 @@ function App() {
     removeTicketFromList(task, task.stage);
 
     task.stage++;
-    const currentNewList = listUtils[task.stage]["list"];
-    currentNewList.splice(indexToPushTo, 0, task);
-    listUtils[task.stage]["setter"]([...currentNewList]);
+    insertTicketIntoList(task, indexToPushTo, task.stage);
   };
 
   const moveLeft = (task: Ticket) => {
