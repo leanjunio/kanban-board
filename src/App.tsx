@@ -50,7 +50,7 @@ function App() {
     setList([...filteredList]);
   };
 
-  const insertTicketIntoList = (ticket: Ticket, placementIndex: number) => {
+  const insertTicketToNewList = (ticket: Ticket, placementIndex: number) => {
     const listIndex = ticket.stage;
     const listToAddTo = listUtils[listIndex]["list"];
     const setList = listUtils[listIndex]["setter"];
@@ -74,7 +74,7 @@ function App() {
     const currentTicketPlacement = getCurrentTicketPlacement(ticket);
     removeTicketFromCurrentList(ticket);
     setTicketDestinationStage(ticket, direction);
-    insertTicketIntoList(ticket, currentTicketPlacement);
+    insertTicketToNewList(ticket, currentTicketPlacement);
   };
 
   const setTicketDestinationStage = (ticket: Ticket, direction: Direction) => {
