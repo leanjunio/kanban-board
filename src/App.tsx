@@ -27,7 +27,7 @@ function App() {
     updateList([...listToAddTo, ticket]);
   };
 
-  const openPrompt = (listIndex: number) => {
+  const openAddTaskPrompt = (listIndex: number) => {
     const newTask = window.prompt("What to do next?");
 
     if (newTask) {
@@ -67,22 +67,22 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Column column={0} onAdd={openPrompt} title="Winnie">
+        <Column column={0} onAdd={openAddTaskPrompt} title="Winnie">
           {winnieList.map((t) => (
             <Card task={t} onRight={moveRight} />
           ))}
         </Column>
-        <Column column={1} onAdd={openPrompt} title="Brad">
+        <Column column={1} onAdd={openAddTaskPrompt} title="Brad">
           {bradList.map((t) => (
             <Card task={t} onRight={moveRight} onLeft={moveLeft} />
           ))}
         </Column>
-        <Column column={2} onAdd={openPrompt} title="Bob">
+        <Column column={2} onAdd={openAddTaskPrompt} title="Bob">
           {bobList.map((t) => (
             <Card task={t} onRight={moveRight} onLeft={moveLeft} />
           ))}
         </Column>
-        <Column column={3} onAdd={openPrompt} title="Thomas">
+        <Column column={3} onAdd={openAddTaskPrompt} title="Thomas">
           {thomasList.map((t) => (
             <Card task={t} onLeft={moveLeft} />
           ))}
