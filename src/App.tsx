@@ -39,7 +39,8 @@ function App() {
     }
   };
 
-  const removeTicketFromList = (ticket: Ticket, listIndex: number) => {
+  const removeTicketFromList = (ticket: Ticket) => {
+    const listIndex = ticket.stage;
     const listToRemoveFrom = listUtils[listIndex]["list"];
     const setList = listUtils[listIndex]["setter"];
     const filteredList = listToRemoveFrom.filter(
@@ -74,7 +75,7 @@ function App() {
 
   const moveTicket = (ticket: Ticket, direction: Direction) => {
     const currentTicketPlacement = getCurrentTicketPlacement(ticket);
-    removeTicketFromList(ticket, ticket.stage);
+    removeTicketFromList(ticket);
     direction === "left" ? ticket.stage-- : ticket.stage++;
     insertTicketIntoList(ticket, currentTicketPlacement, ticket.stage);
   };
