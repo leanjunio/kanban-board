@@ -86,27 +86,34 @@ function App() {
     insertTicketIntoList(task, indexToPushTo, task.stage);
   };
 
+  const moveTicket = (ticket: Ticket, direction: Direction) => {
+    const currentTicketPlacement = getCurrentTicketPlacement(ticket);
+    removeTicketFromList(ticket, ticket.stage);
+    direction === "left" ? ticket.stage-- : ticket.stage++;
+    insertTicketIntoList(ticket, currentTicketPlacement, ticket.stage);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <Column column={0} onAdd={openAddTaskPrompt} title="Winnie">
           {winnieList.map((t) => (
-            <Card task={t} onRight={moveRight} />
+            <Card task={t} onRight={moveTicket} />
           ))}
         </Column>
         <Column column={1} onAdd={openAddTaskPrompt} title="Brad">
           {bradList.map((t) => (
-            <Card task={t} onRight={moveRight} onLeft={moveLeft} />
+            <Card task={t} onRight={moveTicket} onLeft={moveTicket} />
           ))}
         </Column>
         <Column column={2} onAdd={openAddTaskPrompt} title="Bob">
           {bobList.map((t) => (
-            <Card task={t} onRight={moveRight} onLeft={moveLeft} />
+            <Card task={t} onRight={moveTicket} onLeft={moveTicket} />
           ))}
         </Column>
         <Column column={3} onAdd={openAddTaskPrompt} title="Thomas">
           {thomasList.map((t) => (
-            <Card task={t} onLeft={moveLeft} />
+            <Card task={t} onLeft={moveTicket} />
           ))}
         </Column>
       </header>
