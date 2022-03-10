@@ -39,7 +39,7 @@ function App() {
     }
   };
 
-  const removeTicketFromList = (ticket: Ticket) => {
+  const removeTicketFromCurrentList = (ticket: Ticket) => {
     const listIndex = ticket.stage;
     const listToRemoveFrom = listUtils[listIndex]["list"];
     const setList = listUtils[listIndex]["setter"];
@@ -72,7 +72,7 @@ function App() {
 
   const moveTicket = (ticket: Ticket, direction: Direction) => {
     const currentTicketPlacement = getCurrentTicketPlacement(ticket);
-    removeTicketFromList(ticket);
+    removeTicketFromCurrentList(ticket);
     setTicketDestinationStage(ticket, direction);
     insertTicketIntoList(ticket, currentTicketPlacement);
   };
