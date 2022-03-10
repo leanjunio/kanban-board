@@ -73,8 +73,12 @@ function App() {
   const moveTicket = (ticket: Ticket, direction: Direction) => {
     const currentTicketPlacement = getCurrentTicketPlacement(ticket);
     removeTicketFromList(ticket);
-    direction === "left" ? ticket.stage-- : ticket.stage++;
+    setTicketDestinationStage(ticket, direction);
     insertTicketIntoList(ticket, currentTicketPlacement);
+  };
+
+  const setTicketDestinationStage = (ticket: Ticket, direction: Direction) => {
+    direction === "left" ? ticket.stage-- : ticket.stage++;
   };
 
   return (
