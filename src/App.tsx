@@ -63,22 +63,25 @@ function App() {
     setList([...listToAddTo]);
   };
 
+  const getCurrentTicketPlacement = (ticket: Ticket) => {
+    const currentList = listUtils[ticket.stage]["list"];
+    const currentTicketPlacement = currentList.findIndex(
+      ({ task }) => task === ticket.task
+    );
+
+    return currentTicketPlacement;
+  };
+
   const moveRight = (task: Ticket) => {
-    const currentList = listUtils[task.stage]["list"];
-
-    const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
-
+    const indexToPushTo = getCurrentTicketPlacement(task);
     removeTicketFromList(task, task.stage);
     task.stage++;
     insertTicketIntoList(task, indexToPushTo, task.stage);
   };
 
   const moveLeft = (task: Ticket) => {
-    const currentList = listUtils[task.stage]["list"];
-    const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
-
+    const indexToPushTo = getCurrentTicketPlacement(task);
     removeTicketFromList(task, task.stage);
-
     task.stage--;
     insertTicketIntoList(task, indexToPushTo, task.stage);
   };
