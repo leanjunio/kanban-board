@@ -69,7 +69,6 @@ function App() {
     const indexToPushTo = currentList.findIndex((t) => t.task === task.task);
 
     removeTicketFromList(task, task.stage);
-
     task.stage++;
     insertTicketIntoList(task, indexToPushTo, task.stage);
   };
@@ -81,10 +80,7 @@ function App() {
     removeTicketFromList(task, task.stage);
 
     task.stage--;
-    const currentNewList = listUtils[task.stage]["list"];
-    currentNewList.splice(indexToPushTo, 0, task);
-
-    listUtils[task.stage]["setter"]([...currentNewList]);
+    insertTicketIntoList(task, indexToPushTo, task.stage);
   };
 
   return (
