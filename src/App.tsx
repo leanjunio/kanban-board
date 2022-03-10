@@ -72,20 +72,6 @@ function App() {
     return currentTicketPlacement;
   };
 
-  const moveRight = (task: Ticket) => {
-    const indexToPushTo = getCurrentTicketPlacement(task);
-    removeTicketFromList(task, task.stage);
-    task.stage++;
-    insertTicketIntoList(task, indexToPushTo, task.stage);
-  };
-
-  const moveLeft = (task: Ticket) => {
-    const indexToPushTo = getCurrentTicketPlacement(task);
-    removeTicketFromList(task, task.stage);
-    task.stage--;
-    insertTicketIntoList(task, indexToPushTo, task.stage);
-  };
-
   const moveTicket = (ticket: Ticket, direction: Direction) => {
     const currentTicketPlacement = getCurrentTicketPlacement(ticket);
     removeTicketFromList(ticket, ticket.stage);
