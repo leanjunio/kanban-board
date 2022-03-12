@@ -37,7 +37,7 @@ function App() {
                   isFirst={isInFirstColumn}
                   isLast={isInLastColumn}
                   key={i}
-                  task={t}
+                  ticket={t}
                   onMove={moveTicket}
                 />
               );
