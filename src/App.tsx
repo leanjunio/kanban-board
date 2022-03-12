@@ -11,19 +11,21 @@ export type Ticket = {
 export type Direction = "left" | "right";
 
 function App() {
-  const { board, moveTicket, addTicketToList } = useBoard([
+  const { board, moveTicket, addNewTicket } = useBoard([
     "winnie",
     "brad",
     "bob",
     "thomas",
   ]);
 
+  console.log({ board });
+
   const openAddTaskPrompt = (listIndex: number) => {
     const newTask = window.prompt("What to do next?");
 
     if (newTask) {
       const newTicket = { stage: listIndex, task: newTask };
-      addTicketToList(newTicket, listIndex);
+      addNewTicket(newTicket, listIndex);
     }
   };
 
