@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Direction, Ticket } from "./App";
+import { getTicketIndex } from "./utils";
 
 export type List = {
   name: string;
@@ -38,12 +39,10 @@ export const useBoard = (names: string[]) => {
   };
 
   const getListPosition = (ticket: Ticket) => {
-    const currentListTickets = getListTickets(ticket.stage);
-    const currentTicketPlacement = currentListTickets.findIndex(
-      ({ task }) => task === ticket.task
-    );
+    const tickets = getListTickets(ticket.stage);
+    const ticketPosition = getTicketIndex(tickets, ticket);
 
-    return currentTicketPlacement;
+    return ticketPosition;
   };
 
   const setTicketDestinationStage = (ticket: Ticket, direction: Direction) => {
