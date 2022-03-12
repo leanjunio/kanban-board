@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.scss";
 import { Card } from "./Card";
 import { Column } from "./Column";
+import { useBoard } from "./use-project";
 
 export type Ticket = {
   task: string;
@@ -11,6 +12,8 @@ export type Ticket = {
 export type Direction = "left" | "right";
 
 function App() {
+  const [board, setBoard] = useBoard(["winnie", "brad", "bob", "thomas"]);
+  console.log({ board });
   const [winnieList, setWinnieList] = useState<Ticket[]>([]);
   const [bradList, setBradList] = useState<Ticket[]>([]);
   const [bobList, setBobList] = useState<Ticket[]>([]);
