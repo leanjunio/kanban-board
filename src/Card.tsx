@@ -20,7 +20,7 @@ export const Card = ({
         <button disabled={isFirst} onClick={() => onMove(task, "left")}>
           left
         </button>
-        <button disabled={isLast} onClick={() => onMove!(task, "right")}>
+        <button disabled={isLast} onClick={() => onMove(task, "right")}>
           right
         </button>
       </div>
