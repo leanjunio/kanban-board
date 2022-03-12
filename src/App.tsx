@@ -13,7 +13,6 @@ export type Direction = "left" | "right";
 
 function App() {
   const [board, setBoard] = useBoard(["winnie", "brad", "bob", "thomas"]);
-  console.log({ board });
   const [winnieList, setWinnieList] = useState<Ticket[]>([]);
   const [bradList, setBradList] = useState<Ticket[]>([]);
   const [bobList, setBobList] = useState<Ticket[]>([]);
@@ -84,15 +83,25 @@ function App() {
     direction === "left" ? ticket.stage-- : ticket.stage++;
   };
 
+  console.log(board);
+
   return (
     <div className="App">
       <header className="App-header">
-        <Column column={0} onAdd={openAddTaskPrompt} title="Winnie">
-          {winnieList.map((t) => (
-            <Card task={t} onMove={moveTicket} />
-          ))}
-        </Column>
-        <Column column={1} onAdd={openAddTaskPrompt} title="Brad">
+        {board.map((list, key) => (
+          <Column
+            key={key}
+            column={key}
+            onAdd={openAddTaskPrompt}
+            title={list.name}
+          >
+            {list.tickets.map((t) => (
+              <Card task={t} onMove={moveTicket} />
+            ))}
+          </Column>
+        ))}
+
+        {/* <Column column={1} onAdd={openAddTaskPrompt} title="Brad">
           {bradList.map((t) => (
             <Card task={t} onMove={moveTicket} />
           ))}
@@ -106,7 +115,7 @@ function App() {
           {thomasList.map((t) => (
             <Card task={t} onMove={moveTicket} />
           ))}
-        </Column>
+        </Column> */}
       </header>
     </div>
   );
