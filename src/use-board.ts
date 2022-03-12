@@ -2,11 +2,6 @@ import { useState } from "react";
 import { Ticket, Direction } from "./types";
 import { getAllOtherTickets, getTicketIndex } from "./utils";
 
-export type List = {
-  name: string;
-  tickets: Ticket[];
-};
-
 export const useBoard = (names: string[]) => {
   const tickets: Ticket[] = [];
   const lists: List[] = names.map((name) => ({ name, tickets }));
