@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Direction, Ticket } from "./App";
 
 export type List = {
