@@ -14,59 +14,59 @@ export type Direction = "left" | "right";
 function App() {
   const [board, setBoard] = useBoard(["winnie", "brad", "bob", "thomas"]);
 
-  const addTicketToList = (ticket: Ticket, listIndex: number) => {
-    const listToAddTo = listUtils[listIndex]["list"];
-    const updateList = listUtils[listIndex]["setter"];
+  // const addTicketToList = (ticket: Ticket, listIndex: number) => {
+  //   const listToAddTo = listUtils[listIndex]["list"];
+  //   const updateList = listUtils[listIndex]["setter"];
 
-    updateList([...listToAddTo, ticket]);
-  };
+  //   updateList([...listToAddTo, ticket]);
+  // };
 
-  const openAddTaskPrompt = (listIndex: number) => {
-    const newTask = window.prompt("What to do next?");
+  // const openAddTaskPrompt = (listIndex: number) => {
+  //   const newTask = window.prompt("What to do next?");
 
-    if (newTask) {
-      const newTicket = { stage: listIndex, task: newTask };
-      addTicketToList(newTicket, listIndex);
-    }
-  };
+  //   if (newTask) {
+  //     const newTicket = { stage: listIndex, task: newTask };
+  //     addTicketToList(newTicket, listIndex);
+  //   }
+  // };
 
-  const removeTicketFromCurrentList = (ticket: Ticket) => {
-    const listIndex = ticket.stage;
-    const listToRemoveFrom = listUtils[listIndex]["list"];
-    const setList = listUtils[listIndex]["setter"];
-    const filteredList = listToRemoveFrom.filter(
-      ({ task }) => task !== ticket.task
-    );
+  // const removeTicketFromCurrentList = (ticket: Ticket) => {
+  //   const listIndex = ticket.stage;
+  //   const listToRemoveFrom = listUtils[listIndex]["list"];
+  //   const setList = listUtils[listIndex]["setter"];
+  //   const filteredList = listToRemoveFrom.filter(
+  //     ({ task }) => task !== ticket.task
+  //   );
 
-    setList([...filteredList]);
-  };
+  //   setList([...filteredList]);
+  // };
 
-  const insertTicketToNewList = (ticket: Ticket, placementIndex: number) => {
-    const listIndex = ticket.stage;
-    const listToAddTo = listUtils[listIndex]["list"];
-    const setList = listUtils[listIndex]["setter"];
-    const DELETE_COUNT = 0;
+  // const insertTicketToNewList = (ticket: Ticket, placementIndex: number) => {
+  //   const listIndex = ticket.stage;
+  //   const listToAddTo = listUtils[listIndex]["list"];
+  //   const setList = listUtils[listIndex]["setter"];
+  //   const DELETE_COUNT = 0;
 
-    listToAddTo.splice(placementIndex, DELETE_COUNT, ticket);
+  //   listToAddTo.splice(placementIndex, DELETE_COUNT, ticket);
 
-    setList([...listToAddTo]);
-  };
+  //   setList([...listToAddTo]);
+  // };
 
-  const getCurrentTicketPlacement = (ticket: Ticket) => {
-    const currentList = listUtils[ticket.stage]["list"];
-    const currentTicketPlacement = currentList.findIndex(
-      ({ task }) => task === ticket.task
-    );
+  // const getCurrentTicketPlacement = (ticket: Ticket) => {
+  //   const currentList = listUtils[ticket.stage]["list"];
+  //   const currentTicketPlacement = currentList.findIndex(
+  //     ({ task }) => task === ticket.task
+  //   );
 
-    return currentTicketPlacement;
-  };
+  //   return currentTicketPlacement;
+  // };
 
-  const moveTicket = (ticket: Ticket, direction: Direction) => {
-    const currentTicketPlacement = getCurrentTicketPlacement(ticket);
-    removeTicketFromCurrentList(ticket);
-    setTicketDestinationStage(ticket, direction);
-    insertTicketToNewList(ticket, currentTicketPlacement);
-  };
+  // const moveTicket = (ticket: Ticket, direction: Direction) => {
+  //   const currentTicketPlacement = getCurrentTicketPlacement(ticket);
+  //   removeTicketFromCurrentList(ticket);
+  //   setTicketDestinationStage(ticket, direction);
+  //   insertTicketToNewList(ticket, currentTicketPlacement);
+  // };
 
   const setTicketDestinationStage = (ticket: Ticket, direction: Direction) => {
     direction === "left" ? ticket.stage-- : ticket.stage++;
