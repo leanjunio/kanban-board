@@ -13,17 +13,6 @@ export type Direction = "left" | "right";
 
 function App() {
   const [board, setBoard] = useBoard(["winnie", "brad", "bob", "thomas"]);
-  const [winnieList, setWinnieList] = useState<Ticket[]>([]);
-  const [bradList, setBradList] = useState<Ticket[]>([]);
-  const [bobList, setBobList] = useState<Ticket[]>([]);
-  const [thomasList, setThomasList] = useState<Ticket[]>([]);
-
-  const listUtils = [
-    { list: winnieList, setter: setWinnieList },
-    { list: bradList, setter: setBradList },
-    { list: bobList, setter: setBobList },
-    { list: thomasList, setter: setThomasList },
-  ];
 
   const addTicketToList = (ticket: Ticket, listIndex: number) => {
     const listToAddTo = listUtils[listIndex]["list"];
@@ -100,22 +89,6 @@ function App() {
             ))}
           </Column>
         ))}
-
-        {/* <Column column={1} onAdd={openAddTaskPrompt} title="Brad">
-          {bradList.map((t) => (
-            <Card task={t} onMove={moveTicket} />
-          ))}
-        </Column>
-        <Column column={2} onAdd={openAddTaskPrompt} title="Bob">
-          {bobList.map((t) => (
-            <Card task={t} onMove={moveTicket} />
-          ))}
-        </Column>
-        <Column column={3} onAdd={openAddTaskPrompt} title="Thomas">
-          {thomasList.map((t) => (
-            <Card task={t} onMove={moveTicket} />
-          ))}
-        </Column> */}
       </header>
     </div>
   );
