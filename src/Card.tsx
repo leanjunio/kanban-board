@@ -17,12 +17,12 @@ export const Card = ({
     <div className="card">
       <h5>{task.task}</h5>
       <div className="buttons">
-        {!isFirst && (
-          <button onClick={() => onMove!(task, "left")}>left</button>
-        )}
-        {!isLast && (
-          <button onClick={() => onMove!(task, "right")}>right</button>
-        )}
+        <button disabled={isFirst} onClick={() => onMove(task, "left")}>
+          left
+        </button>
+        <button disabled={isLast} onClick={() => onMove!(task, "right")}>
+          right
+        </button>
       </div>
     </div>
   );
