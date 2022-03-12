@@ -26,9 +26,22 @@ function App() {
             onAdd={openAddTaskPrompt}
             title={list.name}
           >
-            {list.tickets.map((t, i) => (
-              <Card key={i} task={t} onMove={moveTicket} />
-            ))}
+            {list.tickets.map((t, i) => {
+              const firstStage = 0;
+              const lastStage = board.length - 1;
+              const isInFirstColumn = t.stage === firstStage;
+              const isInLastColumn = t.stage === lastStage;
+
+              return (
+                <Card
+                  isFirst={isInFirstColumn}
+                  isLast={isInLastColumn}
+                  key={i}
+                  task={t}
+                  onMove={moveTicket}
+                />
+              );
+            })}
           </Column>
         ))}
       </header>
