@@ -1,7 +1,7 @@
 import "./App.scss";
 import { Card } from "./Card";
 import { Column } from "./Column";
-import { useBoard } from "./use-project";
+import { useBoard } from "./use-board";
 
 function App() {
   const names = ["winnie", "brad", "bob", "thomas"];
