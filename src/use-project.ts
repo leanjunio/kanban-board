@@ -13,8 +13,8 @@ export const useBoard = (names: string[]) => {
   const [board, setBoard] = useState(lists);
 
   const removeTicketFromCurrentList = (ticket: Ticket) => {
-    const listToRemoveFrom = getListTickets(ticket.stage);
-    const filteredTickets = listToRemoveFrom.filter(
+    const currentList = getListTickets(ticket.stage);
+    const filteredTickets = currentList.filter(
       ({ task }) => task !== ticket.task
     );
 
