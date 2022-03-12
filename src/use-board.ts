@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Ticket, Direction, List } from "./types";
-import { getAllOtherTickets, getTicketIndex } from "./utils";
+import { addTicketAtIndex, getAllOtherTickets, getTicketIndex } from "./utils";
 
 export const useBoard = (names: string[]) => {
   const tickets: Ticket[] = [];
@@ -46,9 +46,7 @@ export const useBoard = (names: string[]) => {
 
   const insertTicketToNewList = (ticket: Ticket, placementIndex: number) => {
     const ticketsToAddTo = getListTickets(ticket.stage);
-    const DELETE_COUNT = 0;
-
-    ticketsToAddTo.splice(placementIndex, DELETE_COUNT, ticket);
+    addTicketAtIndex(ticketsToAddTo, ticket, placementIndex);
     updateListTickets(ticket.stage, ticketsToAddTo);
   };
 
