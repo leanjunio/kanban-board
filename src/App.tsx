@@ -18,8 +18,6 @@ function App() {
     "thomas",
   ]);
 
-  console.log({ board });
-
   const openAddTaskPrompt = (listIndex: number) => {
     const newTask = window.prompt("What to do next?");
 
