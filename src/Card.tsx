@@ -1,4 +1,4 @@
-import { Direction, Ticket } from "./App";
+import { Ticket, Direction } from "./types";
 
 type CardProps = {
   task: Ticket;
