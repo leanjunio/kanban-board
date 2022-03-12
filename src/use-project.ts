@@ -22,11 +22,11 @@ export const useBoard = (names: string[]) => {
   };
 
   const moveTicket = (ticket: Ticket, direction: Direction) => {
-    const currentTicketPlacement = getListPosition(ticket);
+    const position = getListPosition(ticket);
 
     removeTicketFromCurrentList(ticket);
     setTicketDestinationStage(ticket, direction);
-    insertTicketToNewList(ticket, currentTicketPlacement);
+    insertTicketToNewList(ticket, position);
   };
 
   const getListTickets = (listIndex: number) => {
