@@ -22,7 +22,7 @@ export const useBoard = (names: string[]) => {
   };
 
   const moveTicket = (ticket: Ticket, direction: Direction) => {
-    const currentTicketPlacement = getCurrentTicketPlacement(ticket);
+    const currentTicketPlacement = getListPosition(ticket);
 
     removeTicketFromCurrentList(ticket);
     setTicketDestinationStage(ticket, direction);
@@ -39,7 +39,7 @@ export const useBoard = (names: string[]) => {
     setBoard([...currentBoard]);
   };
 
-  const getCurrentTicketPlacement = (ticket: Ticket) => {
+  const getListPosition = (ticket: Ticket) => {
     const currentListTickets = getListTickets(ticket.stage);
     const currentTicketPlacement = currentListTickets.findIndex(
       ({ task }) => task === ticket.task
