@@ -3,13 +3,6 @@ import { Card } from "./Card";
 import { Column } from "./Column";
 import { useBoard } from "./use-project";
 
-export type Ticket = {
-  task: string;
-  stage: number;
-};
-
-export type Direction = "left" | "right";
-
 function App() {
   const names = ["winnie", "brad", "bob", "thomas"];
   const { board, moveTicket, addNewTicket } = useBoard(names);

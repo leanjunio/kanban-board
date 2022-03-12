@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Direction, Ticket } from "./App";
+import { Ticket, Direction } from "./types";
 import { getAllOtherTickets, getTicketIndex } from "./utils";
 
 export type List = {
