@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Direction, Ticket } from "./App";
-import { getTicketIndex } from "./utils";
+import { getAllOtherTickets, getTicketIndex } from "./utils";
 
 export type List = {
   name: string;
@@ -15,7 +15,7 @@ export const useBoard = (names: string[]) => {
 
   const removeTicketFromCurrentList = (ticket: Ticket) => {
     const currentList = getListTickets(ticket.stage);
-    const filteredList = currentList.filter(({ task }) => task !== ticket.task);
+    const filteredList = getAllOtherTickets(currentList, ticket);
 
     updateListTickets(ticket.stage, filteredList);
   };
