@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Ticket, Direction } from "./types";
+import { Ticket, Direction, List } from "./types";
 import { getAllOtherTickets, getTicketIndex } from "./utils";
 
 export const useBoard = (names: string[]) => {
