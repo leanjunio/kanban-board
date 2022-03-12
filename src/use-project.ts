@@ -15,9 +15,9 @@ export const useBoard = (names: string[]) => {
 
   const removeTicketFromCurrentList = (ticket: Ticket) => {
     const currentList = getListTickets(ticket.stage);
-    const filteredList = getAllOtherTickets(currentList, ticket);
+    const remainingTickets = getAllOtherTickets(currentList, ticket);
 
-    updateListTickets(ticket.stage, filteredList);
+    updateListTickets(ticket.stage, remainingTickets);
   };
 
   const moveTicket = (ticket: Ticket, direction: Direction) => {
