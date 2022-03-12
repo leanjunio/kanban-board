@@ -47,5 +47,25 @@ export const useBoard = (names: string[]) => {
     return currentTicketPlacement;
   };
 
-  return [board];
+  const setTicketDestinationStage = (ticket: Ticket, direction: Direction) => {
+    direction === "left" ? ticket.stage-- : ticket.stage++;
+  };
+
+  const insertTicketToNewList = (ticket: Ticket, placementIndex: number) => {
+    const listIndex = ticket.stage;
+    const listToAddTo = getList(ticket.stage);
+    const DELETE_COUNT = 0;
+
+    listToAddTo.tickets.splice(placementIndex, DELETE_COUNT, ticket);
+    updateList(listIndex, listToAddTo);
+  };
+
+  const addTicketToList = (ticket: Ticket, listIndex: number) => {
+    const listToAddTo = getList(listIndex);
+    listToAddTo.tickets = [...listToAddTo.tickets, ticket];
+
+    updateList(listIndex, listToAddTo);
+  };
+
+  return { board, moveTicket, addTicketToList };
 };
