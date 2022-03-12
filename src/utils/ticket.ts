@@ -1,4 +1,4 @@
-import { Ticket } from "../App";
+import { Ticket } from "../types";
 
 export const getTicketIndex = (list: Ticket[], ticket: Ticket) => {
   return list.findIndex(({ task }) => task === ticket.task);
