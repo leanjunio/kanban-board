@@ -14,20 +14,19 @@ export const useBoard = (names: string[]) => {
 
   const removeTicketFromCurrentList = (ticket: Ticket) => {
     const listToRemoveFrom = getList(ticket.stage);
-    const filteredList = listToRemoveFrom.filter(
+    listToRemoveFrom.tickets = listToRemoveFrom.tickets.filter(
       ({ task }) => task !== ticket.task
     );
 
-    updateList(ticket.stage, filteredList);
-    setList([...filteredList]);
+    updateList(ticket.stage, listToRemoveFrom);
   };
 
-  // const moveTicket = (ticket: Ticket, direction: Direction) => {
-  //   const currentTicketPlacement = getCurrentTicketPlacement(ticket);
-  //   removeTicketFromCurrentList(ticket);
-  //   setTicketDestinationStage(ticket, direction);
-  //   insertTicketToNewList(ticket, currentTicketPlacement);
-  // };
+  const moveTicket = (ticket: Ticket, direction: Direction) => {
+    const currentTicketPlacement = getCurrentTicketPlacement(ticket);
+    removeTicketFromCurrentList(ticket);
+    setTicketDestinationStage(ticket, direction);
+    insertTicketToNewList(ticket, currentTicketPlacement);
+  };
 
   const getList = (listIndex: number) => {
     return board[listIndex];
@@ -39,14 +38,14 @@ export const useBoard = (names: string[]) => {
     setBoard([...currentBoard]);
   };
 
-  // const getCurrentTicketPlacement = (ticket: Ticket) => {
-  //   const currentList = listUtils[ticket.stage]["list"];
-  //   const currentTicketPlacement = currentList.findIndex(
-  //     ({ task }) => task === ticket.task
-  //   );
+  const getCurrentTicketPlacement = (ticket: Ticket) => {
+    const currentList = getList(ticket.stage);
+    const currentTicketPlacement = currentList.tickets.findIndex(
+      ({ task }) => task === ticket.task
+    );
 
-  //   return currentTicketPlacement;
-  // };
+    return currentTicketPlacement;
+  };
 
   return [board];
 };
