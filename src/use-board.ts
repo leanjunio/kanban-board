@@ -12,7 +12,7 @@ export const useBoard = (names: string[]) => {
     const currentList = getListTickets(listIndex);
     const remainingTickets = getAllOtherTickets(currentList, ticket);
 
-    updateListTickets(ticket.stage, remainingTickets);
+    updateListTickets(listIndex, remainingTickets);
   };
 
   const moveTicket = (ticket: Ticket, direction: Direction) => {
