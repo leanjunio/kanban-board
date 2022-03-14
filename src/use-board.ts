@@ -45,9 +45,10 @@ export const useBoard = (names: string[]) => {
   };
 
   const insertTicketToNewList = (ticket: Ticket, placementIndex: number) => {
-    const ticketsToAddTo = getListTickets(ticket.stage);
+    const listIndex = ticket.stage;
+    const ticketsToAddTo = getListTickets(listIndex);
     addTicketAtIndex(ticketsToAddTo, ticket, placementIndex);
-    updateListTickets(ticket.stage, ticketsToAddTo);
+    updateListTickets(listIndex, ticketsToAddTo);
   };
 
   const addNewTicket = (ticket: Ticket, listIndex: number) => {
