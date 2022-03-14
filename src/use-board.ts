@@ -2,6 +2,12 @@ import { useState } from "react";
 import { Ticket, Direction, List } from "./types";
 import { addTicketAtIndex, getAllOtherTickets, getTicketIndex } from "./utils";
 
+/**
+ * A hook that allows reusability and abstraction of board actions
+ *
+ * @param names - the list of names to make columns out of
+ * @returns the functions necessary to interact with the board
+ */
 export const useBoard = (names: string[]) => {
   const tickets: Ticket[] = [];
   const lists: List[] = names.map((name) => ({ name, tickets }));
