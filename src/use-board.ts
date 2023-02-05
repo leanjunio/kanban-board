@@ -3,7 +3,7 @@ import { Ticket, Direction, List } from "./types";
 import { addTicketAtIndex, getAllOtherTickets, getTicketIndex } from "./utils";
 
 /**
- * This hook handles all the board logic
+ * This hook handles all the board logic, test comment
  *
  * @param names - the list of names to make columns out of
  * @returns the functions necessary to interact with the board
