@@ -15,6 +15,7 @@ export const useBoard = (names: string[]) => {
 
   const removeTicketFromCurrentList = (ticket: Ticket) => {
     const listIndex = ticket.stage;
+
     const currentList = getListTickets(listIndex);
     const remainingTickets = getAllOtherTickets(currentList, ticket);
 
